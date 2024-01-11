@@ -1,8 +1,16 @@
-/*
+.emoji-suggestion-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 0.8rem;
+  max-width: 480px;
+}
 
-This CSS file will be included with your plugin, and
-available in the app when your plugin is enabled.
+.emoji-suggestion-item .emoji {
+  font-size: 0.8rem;
+  min-width: 20px;
+}
 
-If your plugin does not need CSS, delete this file.
-
-*/
+.emoji-suggestion-item .name {
+  word-break: break-all;
+}
