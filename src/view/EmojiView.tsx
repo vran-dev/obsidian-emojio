@@ -65,6 +65,7 @@ export class EmojiView extends ItemView {
 												head +
 												emoji.skins[0].native.length,
 										},
+										scrollIntoView: true,
 									});
 									this.contentEl.blur();
 									this.editorView.focus();
