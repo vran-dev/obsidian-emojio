@@ -13,7 +13,7 @@ export default class EmojioPlugin extends Plugin {
 
 		this.addCommand({
 			id: "open-emojio",
-			name: "open emojio view",
+			name: "open emoji view",
 			callback: () => {
 				this.initLeaf();
 			},
@@ -21,7 +21,7 @@ export default class EmojioPlugin extends Plugin {
 
 		this.addCommand({
 			id: "open-emojio-modal",
-			name: "open emojio modal",
+			name: "open emoji modal",
 			editorCallback: () => {
 				new EmojiModal(this.app).open();
 			},
