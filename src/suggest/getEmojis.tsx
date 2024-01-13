@@ -1,6 +1,6 @@
 // @ts-ignore
 import data from "@emoji-mart/data";
-import { init, SearchIndex } from "emoji-mart";
+import { SearchIndex, init } from "emoji-mart";
 import { EmojiMartData, Emoji } from "@emoji-mart/data";
 
 init({ data });
@@ -11,10 +11,10 @@ export interface EmojiData {
 }
 
 export const getFlatEmojis = (query: string): Promise<Emoji[]> => {
-	return getEmojis({ query }).then(data => {
+	return getEmojis({ query }).then((data) => {
 		return data.flatMap((emojiData) => emojiData.emojis);
-	})
-}
+	});
+};
 
 export const getEmojis = async ({
 	query,

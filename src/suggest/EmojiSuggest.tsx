@@ -10,9 +10,7 @@ import { getFlatEmojis } from "./getEmojis";
 import { Emoji } from "@emoji-mart/data";
 
 export class EmojiSuggest extends EditorSuggest<Emoji> {
-	queryRegex = new RegExp(/:[^\s:0][^:]*$/);
-
-	endsWithColonRegex = new RegExp(/:$/);
+	queryMatchRegex = new RegExp(/[:：]([^:：\s]+)*$/);
 
 	rootEl: HTMLElement;
 
@@ -22,52 +20,43 @@ export class EmojiSuggest extends EditorSuggest<Emoji> {
 		file: TFile | null
 	): EditorSuggestTriggerInfo | null {
 		const term = editor.getLine(cursor.line).slice(0, cursor.ch);
-		if (term.match(this.endsWithColonRegex)) {
-			return {
-				end: cursor,
-				start: {
-					ch: term.lastIndexOf(":"),
-					line: cursor.line,
-				},
-				query: "",
-			};
+		const result = term.match(this.queryMatchRegex);
+
+		if (!result) return null;
+		if (result.index === undefined) {
+			return null;
 		}
 
-		const match = term.match(this.queryRegex)?.first();
-		if (!match) return null;
 		return {
 			end: cursor,
 			start: {
-				ch: term.lastIndexOf(match),
+				ch: result.index,
 				line: cursor.line,
 			},
-			query: match,
+			query: result[1] || "",
 		};
 	}
 
 	getSuggestions(context: EditorSuggestContext): Emoji[] | Promise<Emoji[]> {
-		const query = context.query.substring(1);
-		console.log("query is ", query);
-		return getFlatEmojis(query);
+		return getFlatEmojis(context.query);
 	}
 
 	renderSuggestion(value: Emoji, el: HTMLElement): void {
-		console.log("value is ", value);
 		const row = createDiv({
 			parent: el,
 			cls: "emoji-suggestion-item",
 		});
 
-		const emojiValue = createSpan({
+		createSpan({
 			text: value.skins[0].native,
 			parent: row,
-			cls: 'emoji'
+			cls: "emoji",
 		});
 
-		const emojiName = createSpan({
+		createSpan({
 			text: value.name,
 			parent: row,
-			cls: 'name'
+			cls: "name",
 		});
 	}
 

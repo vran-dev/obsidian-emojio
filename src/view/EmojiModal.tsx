@@ -21,8 +21,6 @@ export class EmojiModal extends Modal {
 		const editor = markdownView.editor;
 		// @ts-ignore
 		const editorView = editor.cm as EditorView;
-		editorView.dispatch({
-		})
 		const selection = editorView.state.selection.main;
 		let head = selection.head;
 
@@ -31,14 +29,21 @@ export class EmojiModal extends Modal {
 		this.root.render(
 			<StrictMode>
 				<EmojiVirtualTable
-					closeTypeahead={() => {}}
+					close={() => {
+						this.close();
+					}}
+					showSearch={true}
 					onSelect={(emoji) => {
 						editorView.dispatch({
 							changes: {
 								from: head,
 								insert: emoji.skins[0].native,
 							},
+							selection: {
+								anchor: head + emoji.skins[0].native.length,
+							},
 						});
+
 						head += emoji.skins[0].native.length;
 					}}
 				/>
