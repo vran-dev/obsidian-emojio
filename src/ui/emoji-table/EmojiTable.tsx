@@ -328,7 +328,7 @@ export function EmojiVirtualTable(props: {
 										}
 									}}
 								>
-									copy
+									Copy
 								</button>
 								{props.emojiPreviewActions?.map((action) => {
 									return (

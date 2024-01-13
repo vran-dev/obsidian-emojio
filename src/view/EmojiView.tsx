@@ -49,7 +49,7 @@ export class EmojiView extends ItemView {
 					onSelect={(emoji) => {}}
 					emojiPreviewActions={[
 						{
-							name: "Append To Editor",
+							name: "Append to editor",
 							execute: (emoji) => {
 								if (this.editorView) {
 									const selection =
