@@ -1,8 +1,203 @@
-/*
+.emoji-suggestion-item {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	gap: 0.8rem;
+	max-width: 480px;
+}
 
-This CSS file will be included with your plugin, and
-available in the app when your plugin is enabled.
+.emoji-suggestion-item .emoji {
+	font-size: 1.2rem;
+	min-width: 20px;
+}
 
-If your plugin does not need CSS, delete this file.
+.emoji-suggestion-item .name {
+	word-break: break-all;
+}
 
+.emoji-container {
+  color: #37352f;
+  padding-top: 0.8rem;
+  padding-bottom: 0rem;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  max-width: 600px;
+}
+
+.emoji-container .emoji-picker {
+  overflow-y: auto;
+  overflow-x: hidden;
+  width: 100%;
+  height: auto;
+  max-height: 280px;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.emoji-container .emoji-picker .inner {
+	position: relative;
+	width: 100%;
+}
+
+.emoji-container .emoji-picker .row {
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	gap: 0.2rem;
+  width: 100%;
+  justify-content: start;
+}
+
+.emoji-container .emoji-picker .col {
+	width: 32px;
+	height: 32px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.emoji-container .emoji-picker .emoji {
+	display: block;
+	font-size: 24px;
+	text-align: center;
+	cursor: pointer;
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+
+.emoji-container .emoji-picker .emoji.selected {
+	border-radius: 3px;
+	background-color: var(--highlight-color);
+	color: var(--highlight-text-color);
+}
+
+.emoji-container .emoji-picker .emoji .indicator {
+	font-size: 6px;
+	color: #afafaf;
+	width: 8px;
+	height: 8px;
+	display: block;
+	position: absolute;
+	right: -2px;
+	top: 0px;
+}
+
+.emoji-container .emoji-search {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 0.35rem;
+}
+
+.emoji-container .emoji-search .emoji-search-icon {
+	color: var(--text-faint);
+	height: 18px;
+	width: 18px;
+}
+
+.emoji-container .emoji-search .emoji-search-icon svg {
+	height: 100%;
+	width: 100%;
+}
+
+.emoji-container .emoji-search .emoji-search-input {
+  flex-grow: 1;
+  min-width: 80px;
+  max-width: 88%;
+	box-shadow: none;
+}
+
+/**
+* Emoji preview
 */
+.emoji-container .emoji-preview {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  position: relative;
+  box-shadow: 0 18px 56px rgba(0, 0, 0, .16), 0 4px 12px rgba(0, 0, 0, .16);
+  border-top-right-radius: 8px;
+  border-top-left-radius: 8px;
+}
+
+.emoji-container .emoji-preview .close-button {
+  position: absolute;
+  right: 0;
+  top: 0;
+  color: var(--text-faint);
+  box-shadow: none;
+  border-width: 0px;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.emoji-container .emoji-preview .close-button:hover {
+  background-color: var(--background-modifier-hover);
+}
+
+.emoji-container .emoji-preview .content {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.emoji-container .emoji-preview .content .left {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.2rem;
+}
+
+.emoji-container .emoji-preview .content .right {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.3rem;
+  flex-grow: 1;
+}
+
+.emoji-container .emoji-preview .content .right .emoji-name {
+  flex-grow: 1;
+}
+
+.emoji-container .emoji-preview .content .right .emoji-actions {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.3rem;
+}
+
+.emoji-container .emoji-preview .content .right .emoji-actions button {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: baseline;
+  justify-content: space-between;
+  box-shadow: none;
+  border-width: 0px;
+  background-color: var(--background-secondary);
+}
+
+.emoji-container .emoji-preview .content .right .emoji-actions button:hover {
+  background-color: var(--background-modifier-hover);
+}
