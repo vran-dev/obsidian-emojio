@@ -52,13 +52,11 @@ export function toTwoDimensional<T>(array: T[], columns: number): T[][] {
 		const end = start + columns;
 		const items = array.slice(start, end);
 		if (items.length == 0) {
-			// @ts-ignore
 			return result;
 		}
 		result.push(items);
 		row++;
 		if (items.length < columns) {
-			// @ts-ignore
 			return result;
 		}
 	}

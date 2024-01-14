@@ -12,7 +12,7 @@ export default class EmojioPlugin extends Plugin {
 		});
 
 		this.addCommand({
-			id: "open-emojio",
+			id: "open-emojio-view",
 			name: "open emoji view",
 			callback: () => {
 				this.initLeaf();
