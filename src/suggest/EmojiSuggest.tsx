@@ -10,7 +10,9 @@ import { getFlatEmojis } from "./getEmojis";
 import { Emoji } from "@emoji-mart/data";
 
 export class EmojiSuggest extends EditorSuggest<Emoji> {
-	queryMatchRegex = new RegExp(/[:：]([^:：\s]+)*$/);
+	queryMatchRegex = new RegExp(
+		/[:：]([^:：\s\\`\\!\\@\\#\\$\\%\\^\\&\\*\\(\\)\\.\\?\\'\\"\\-\\_\\+\\=]+)*$/
+	);
 
 	rootEl: HTMLElement;
 
